@@ -1,0 +1,1 @@
+const l=({label:t,variant:a="primary",icon:e,fullWidth:n,onClick:s})=>React.createElement("button",{className:["ds-btn",`ds-btn--${a}`,n?"ds-btn--full":""].join(" "),onClick:s},e&&React.createElement("span",null,e),t);l.__docgenInfo={description:"",methods:[],displayName:"DSButton",props:{variant:{defaultValue:{value:"'primary'",computed:!1},required:!1}}};export{l as D};
