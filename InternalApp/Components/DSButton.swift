@@ -1,13 +1,14 @@
 import SwiftUI
 
 // MARK: - DS Button
-// Variants: primary (black), secondary (outlined), ghost
+// Variants: primary (black), secondary (outlined), ghost, accent, secondaryInverted (for dark backgrounds)
 
 enum DSButtonVariant {
-    case primary    // filled black
-    case secondary  // outlined
-    case ghost      // text only
-    case accent     // gold fill
+    case primary            // filled black
+    case secondary          // outlined black — for light backgrounds
+    case secondaryInverted  // outlined white — for dark backgrounds
+    case ghost              // text only
+    case accent             // gold fill
 }
 
 struct DSButton: View {
@@ -39,7 +40,7 @@ struct DSButton: View {
             .cornerRadius(DSRadius.full)
             .overlay(
                 RoundedRectangle(cornerRadius: DSRadius.full)
-                    .strokeBorder(borderColor, lineWidth: variant == .secondary ? 1 : 0)
+                    .strokeBorder(borderColor, lineWidth: hasBorder ? 1 : 0)
             )
         }
         .buttonStyle(.plain)
@@ -54,27 +55,34 @@ struct DSButton: View {
 
     private var background: Color {
         switch variant {
-        case .primary:   return .DS.black
-        case .secondary: return .clear
-        case .ghost:     return .clear
-        case .accent:    return .DS.accent
+        case .primary:            return .DS.black
+        case .secondary:          return .clear
+        case .secondaryInverted:  return .clear
+        case .ghost:              return .clear
+        case .accent:             return .DS.accent
         }
     }
 
     private var foreground: Color {
         switch variant {
-        case .primary:   return .DS.white
-        case .secondary: return .DS.black
-        case .ghost:     return .DS.Text.body
-        case .accent:    return .DS.white
+        case .primary:            return .DS.white
+        case .secondary:          return .DS.black
+        case .secondaryInverted:  return .DS.white
+        case .ghost:              return .DS.Text.body
+        case .accent:             return .DS.white
         }
     }
 
     private var borderColor: Color {
         switch variant {
-        case .secondary: return .DS.black
-        default:         return .clear
+        case .secondary:         return .DS.black
+        case .secondaryInverted: return .DS.white.opacity(0.35)
+        default:                 return .clear
         }
+    }
+
+    private var hasBorder: Bool {
+        variant == .secondary || variant == .secondaryInverted
     }
 }
 

@@ -110,13 +110,8 @@ struct ProfileView: View {
                     Spacer()
                 }
 
-                // Edit profile button
-                DSButton(title: "Modifier le profil", variant: .secondary, isFullWidth: true, action: {})
-                    .overlay(
-                        RoundedRectangle(cornerRadius: DSRadius.full)
-                            .strokeBorder(Color.white.opacity(0.3), lineWidth: 1)
-                    )
-                    .foregroundColor(.DS.white)
+                // Edit profile button — secondaryInverted for dark card background
+                DSButton(title: "Modifier le profil", variant: .secondaryInverted, isFullWidth: true, action: {})
             }
         }
         .padding(.top, DSSpacing.lg)
@@ -167,6 +162,7 @@ struct ProfileView: View {
         .padding(.horizontal, DSSpacing.base)
         .padding(.vertical, DSSpacing.md)
         .frame(minHeight: 56)
+        .contentShape(Rectangle())
     }
 
     // MARK: - Section Header
