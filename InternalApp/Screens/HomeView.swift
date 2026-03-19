@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var selectedTab: Int = 0
+    @Binding var selectedTab: Int
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -131,5 +131,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    @Previewable @State var tab = 0
+    HomeView(selectedTab: $tab)
 }
