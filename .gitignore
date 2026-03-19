@@ -1,0 +1,39 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Build
+build/
+*.o
+*.d
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods (if used later)
+Pods/
+Podfile.lock
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+**/.DS_Store
+
+# Xcode generated
+*.xcodeproj
+# Uncomment to track the .xcodeproj (not recommended with XcodeGen):
+# !InternalApp.xcodeproj/project.pbxproj
+
+# Env / secrets
+.env
+*.env.local
+
+# Previews cache
+**/PreviewReplacement*.swift
