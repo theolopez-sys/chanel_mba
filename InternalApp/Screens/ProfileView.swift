@@ -4,52 +4,62 @@ struct ProfileView: View {
     @Binding var selectedTab: Int
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color.DS.neutralLower.ignoresSafeArea()
+        NavigationStack {
+            ZStack(alignment: .bottom) {
+                Color.DS.neutralLower.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                // Header
-                profileHeader
+                VStack(spacing: 0) {
+                    // Header
+                    profileHeader
 
-                // Scrollable content
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: DSSpacing.xl) {
+                    // Scrollable content
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: DSSpacing.xl) {
 
-                        // Profile card
-                        profileCard
+                            // Profile card
+                            profileCard
 
-                        // Stats
-                        sectionHeader(title: "Statistiques")
-                        HStack(spacing: DSSpacing.md) {
-                            DSStatCard(icon: "checkmark.circle.fill", value: "183", label: "Tâches")
-                            DSStatCard(icon: "folder.fill",           value: "12",  label: "Projets")
-                            DSStatCard(icon: "star.fill",             value: "94%", label: "Score")
+                            // Stats
+                            sectionHeader(title: "Statistiques")
+                            HStack(spacing: DSSpacing.md) {
+                                DSStatCard(icon: "checkmark.circle.fill", value: "183", label: "Tâches")
+                                DSStatCard(icon: "folder.fill",           value: "12",  label: "Projets")
+                                DSStatCard(icon: "star.fill",             value: "94%", label: "Score")
+                            }
+
+                            // Parcours
+                            sectionHeader(title: "Mes parcours", linkTitle: "Tout voir")
+                            parcoursSection
+
+                            // Account settings
+                            sectionHeader(title: "Compte")
+                            accountSection
+
+                            // Sign out
+                            DSButton(
+                                title: "Se déconnecter",
+                                variant: .secondary,
+                                icon: "rectangle.portrait.and.arrow.right",
+                                isFullWidth: true,
+                                action: {}
+                            )
+
+                            // Bottom safe area padding
+                            Spacer().frame(height: 80)
                         }
-
-                        // Account settings
-                        sectionHeader(title: "Compte")
-                        accountSection
-
-                        // Sign out
-                        DSButton(
-                            title: "Se déconnecter",
-                            variant: .secondary,
-                            icon: "rectangle.portrait.and.arrow.right",
-                            isFullWidth: true,
-                            action: {}
-                        )
-
-                        // Bottom safe area padding
-                        Spacer().frame(height: 80)
+                        .padding(.horizontal, DSSpacing.pagePadding)
                     }
-                    .padding(.horizontal, DSSpacing.pagePadding)
                 }
-            }
 
-            // Tab bar
-            DSTabBar(selectedIndex: $selectedTab)
+                // Tab bar
+                DSTabBar(selectedIndex: $selectedTab)
+            }
+            .ignoresSafeArea(edges: .bottom)
+            .toolbar(.hidden, for: .navigationBar)
+            .navigationDestination(for: ParcourModel.self) { parcours in
+                ParcourDetailView(parcours: parcours)
+            }
         }
-        .ignoresSafeArea(edges: .bottom)
     }
 
     // MARK: - Header
@@ -117,16 +127,91 @@ struct ProfileView: View {
         .padding(.top, DSSpacing.lg)
     }
 
+    // MARK: - Parcours Section
+
+    private var parcoursSection: some View {
+        VStack(spacing: DSSpacing.md) {
+            ForEach(ParcourModel.sampleParcours) { parcours in
+                NavigationLink(value: parcours) {
+                    parcourCard(parcours)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func parcourCard(_ parcours: ParcourModel) -> some View {
+        DSCard {
+            VStack(alignment: .leading, spacing: DSSpacing.md) {
+                // Top row: icon + info + badge
+                HStack(spacing: DSSpacing.base) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: DSRadius.sm)
+                            .fill(Color.DS.neutralLower)
+                            .frame(width: 44, height: 44)
+                        Image(systemName: parcours.icon)
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.DS.Text.body)
+                    }
+
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(parcours.title)
+                            .font(.DS.bodySm)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.DS.Text.heading)
+                            .lineLimit(1)
+
+                        Text(parcours.category)
+                            .font(.DS.micro)
+                            .foregroundColor(.DS.Text.muted)
+                    }
+
+                    Spacer()
+
+                    DSBadge(text: parcours.status.label, variant: parcours.status.badgeVariant)
+                }
+
+                // Progress bar + percentage
+                VStack(alignment: .leading, spacing: DSSpacing.xs) {
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: DSRadius.full)
+                                .fill(Color.DS.neutralLower)
+                                .frame(height: 4)
+
+                            RoundedRectangle(cornerRadius: DSRadius.full)
+                                .fill(Color.DS.black)
+                                .frame(width: geo.size.width * parcours.progress, height: 4)
+                        }
+                    }
+                    .frame(height: 4)
+
+                    HStack {
+                        Text("\(parcours.completedModules)/\(parcours.modules.count) modules")
+                            .font(.DS.micro)
+                            .foregroundColor(.DS.Text.muted)
+                        Spacer()
+                        Text("\(Int(parcours.progress * 100))%")
+                            .font(.DS.micro)
+                            .fontWeight(.bold)
+                            .foregroundColor(.DS.Text.heading)
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - Account Section
 
     private var accountSection: some View {
         DSCard(padding: 0) {
             VStack(spacing: 0) {
-                accountRow(icon: "person.fill",            title: "Informations personnelles")
+                accountRow(icon: "person.fill",             title: "Informations personnelles")
                 Divider().background(Color.DS.neutralMid).padding(.leading, 64)
-                accountRow(icon: "bell.fill",              title: "Notifications")
+                accountRow(icon: "bell.fill",               title: "Notifications")
                 Divider().background(Color.DS.neutralMid).padding(.leading, 64)
-                accountRow(icon: "lock.fill",              title: "Confidentialité")
+                accountRow(icon: "lock.fill",               title: "Confidentialité")
                 Divider().background(Color.DS.neutralMid).padding(.leading, 64)
                 accountRow(icon: "questionmark.circle.fill", title: "Aide & support", badge: "Nouveau")
             }
@@ -168,11 +253,20 @@ struct ProfileView: View {
     // MARK: - Section Header
 
     @ViewBuilder
-    private func sectionHeader(title: String) -> some View {
+    private func sectionHeader(title: String, linkTitle: String? = nil) -> some View {
         HStack {
             Text(title)
                 .dsLabel()
             Spacer()
+            if let linkTitle {
+                HStack(spacing: 2) {
+                    Text(linkTitle)
+                        .dsLabel()
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 10, weight: .bold))
+                        .foregroundColor(.DS.Text.muted)
+                }
+            }
         }
     }
 }
