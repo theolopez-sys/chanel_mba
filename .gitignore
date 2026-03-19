@@ -37,3 +37,5 @@ Podfile.lock
 
 # Previews cache
 **/PreviewReplacement*.swift
+storybook/node_modules/
+storybook/storybook-static/

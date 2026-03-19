@@ -1,1 +1,0 @@
-const d=({text:e,variant:a="dark"})=>React.createElement("span",{className:`ds-badge ds-badge--${a}`},e);d.__docgenInfo={description:"",methods:[],displayName:"DSBadge",props:{variant:{defaultValue:{value:"'dark'",computed:!1},required:!1}}};export{d as D};
