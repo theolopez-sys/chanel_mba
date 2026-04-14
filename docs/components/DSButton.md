@@ -1,6 +1,8 @@
 # DSButton
 
-> **Figma source** — [Internal European Design System · Guidelines node 6698-1336](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=6698-1336) · [Variables node 2003-750](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=2003-750)
+> **Figma source**
+> - [Guidelines — node 6698:1336](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=6698-1336) (`get_design_context`)
+> - [Variables — node 6:285 / frame 2003:750](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=6-285) (`get_variable_defs`)
 
 ---
 
@@ -253,3 +255,193 @@ DSButton(title: "Confirm",    variant: .accent, isFullWidth: true) { }
 | Storybook stories | `storybook/src/stories/Button.stories.jsx` |
 | iOS / SwiftUI | `InternalApp/Components/DSButton.swift` |
 | Spec Figma détaillée | `Figma/components/DSButton.md` |
+
+---
+
+## Figma Source — Variable Definitions
+
+> Extrait via `get_variable_defs` · node [6:285](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=6-285) (page Buttons) · frame [2003:750](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=2003-750)
+
+```json
+{
+  "colors/white":                          "#ffffff",
+  "colors/text/disabled":                  "#b6b6b6",
+  "colors/neutral/higher":                 "#333333",
+  "colors/surface/white":                  "#ffffff",
+  "colors/surface/black":                  "#000000",
+  "colors/border/medium":                  "#939292",
+  "colors/surface/fake white":             "#1d1d1d",
+  "colors/neutral/lowest":                 "#1d1d1d",
+
+  "font/family/title":                     "ABChanel Corpo 2022",
+  "font/weight/bold":                      "bold",
+  "font/size/md":                          "16",
+  "font/size/sm":                          "14",
+
+  "heading/h4":                            "Font(family: font/family/title, style: font/weight/bold, size: font/size/md, weight: 600, lineHeight: 100, letterSpacing: 0.1)",
+  "button/medium":                         "Font(family: font/family/title, style: font/weight/bold, size: font/size/md, weight: 600, lineHeight: 100, letterSpacing: 0.1)",
+  "button/small":                          "Font(family: font/family/title, style: font/weight/bold, size: font/size/sm, weight: 600, lineHeight: 100, letterSpacing: 0.1)",
+
+  "size/gap/3xs":                          "4",
+  "size/gap/xs":                           "8",
+  "size/gap/md":                           "16",
+  "size/border/default":                   "1",
+
+  "button/background/primary/default":     "#000000",
+  "button/background/primary/pressed":     "#333333",
+  "button/background/primary/disabled":    "#2020200d",
+  "button/background/secondary/pressed":   "#f7f7f7",
+
+  "button/text/primary/default":           "#ededed",
+  "button/text/primary/disabled":          "#b6b6b6",
+  "button/text/secondary/default":         "#000000",
+  "button/text/secondary/disabled":        "#b6b6b6",
+  "button/text/tertiary/default":          "#000000",
+  "button/text/tertiary/pressed":          "#333333",
+  "button/text/tertiary/disabled":         "#b6b6b6",
+
+  "button/icon/primary/default":           "#ededed",
+  "button/icon/primary/disabled":          "#b6b6b6",
+  "button/icon/secondary/default":         "#000000",
+  "button/icon/secondary/disabled":        "#b6b6b6",
+  "button/icon/tertiary/default":          "#000000",
+  "button/icon/tertiary/pressed":          "#333333",
+  "button/icon/tertiary/disabled":         "#b6b6b6",
+
+  "button/border/secondary/default":       "#1d1d1d",
+  "button/border/secondary/disabled":      "#939292"
+}
+```
+
+---
+
+## Figma Source — Design Context
+
+> Extrait via `get_design_context` · node [6698:1336](https://www.figma.com/design/R1w2martdIEdeXEad1g4Yo/Internal-European-Design-System?node-id=6698-1336) (Buttons - Guidelines)
+
+### Assets Figma (images vectorielles des guidelines)
+
+```ts
+const imgVector    = "https://www.figma.com/api/mcp/asset/5db7aaba-59d7-416b-8746-fbe12c0bd1f5";
+const imgAnimation = "https://www.figma.com/api/mcp/asset/75d6540f-9a4c-41fc-ae46-1160117b431f";
+const imgVector1   = "https://www.figma.com/api/mcp/asset/81075c53-bc65-4865-99aa-d501f326f529";
+const imgVector2   = "https://www.figma.com/api/mcp/asset/1e007a3b-1861-49f0-a2f1-e5c73de46c90";
+const imgVector3   = "https://www.figma.com/api/mcp/asset/4f7c3db6-bba9-40bf-bb5b-35dfcee39820";
+const imgVector4   = "https://www.figma.com/api/mcp/asset/5f4fe1a6-d7df-46ed-a798-2821931d5267";
+const imgVector5   = "https://www.figma.com/api/mcp/asset/311e097b-cee1-4753-bb2c-7fc6da48d558";
+const imgVector6   = "https://www.figma.com/api/mcp/asset/d35dcc4c-9f44-4831-81ff-1bf97100e2e5";
+const imgVector7   = "https://www.figma.com/api/mcp/asset/6d0ba7e7-d568-443e-82dc-d35bf59ee858";
+const imgVector8   = "https://www.figma.com/api/mcp/asset/5b272246-3364-46a0-85dd-c122dd2aa023";
+const imgVector9   = "https://www.figma.com/api/mcp/asset/daeda6ba-7912-42e9-a0c1-78ad54585073";
+const imgVector10  = "https://www.figma.com/api/mcp/asset/1b478d67-300b-4871-9fb1-8938793f26da";
+const imgVector11  = "https://www.figma.com/api/mcp/asset/b64f77e5-2f15-483f-82ab-3d3a10deda29";
+```
+
+### Patterns JSX — Bouton Primary (medium)
+
+```tsx
+{/* Primary — medium, avec icône gauche + animation ripple */}
+<button
+  className="
+    bg-[var(--button/background/primary/default,black)]
+    flex gap-[var(--size/gap/xs,8px)] items-center justify-center
+    min-h-[40px] overflow-clip
+    px-[var(--size/gap/md,16px)] py-[var(--size/gap/xs,8px)]
+    cursor-pointer
+  "
+  data-name="button"
+>
+  {/* Ripple animation */}
+  <div className="-translate-x-1/2 -translate-y-1/2 absolute left-[calc(50%-1px)] size-0 top-1/2">
+    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgAnimation} />
+  </div>
+  {/* Icon left 24×24 */}
+  <div className="overflow-clip relative shrink-0 size-[24px]" data-name="icon-left">
+    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector1} />
+  </div>
+  {/* Label */}
+  <div className="
+    font-[family-name:var(--font/family/title,'ABChanel_Corpo_2022:bold',sans-serif)]
+    font-[var(--font/weight/bold,normal)]
+    text-[color:var(--button/text/primary/default,#ededed)]
+    text-[length:var(--font/size/md,16px)]
+    tracking-[0.1px] uppercase leading-[100%]
+    whitespace-nowrap
+  ">
+    <p>Label</p>
+  </div>
+</button>
+```
+
+### Patterns JSX — Bouton Secondary (small)
+
+```tsx
+{/* Secondary — small, sans icône */}
+<button
+  className="
+    border-[length:var(--size/border/default,1px)]
+    border-[var(--button/border/secondary/default,#1d1d1d)] border-solid
+    bg-[var(--colors/surface/fake-white,#f7f7f7)]
+    flex gap-[var(--size/gap/xs,8px)] items-center justify-center
+    min-h-[32px] overflow-clip
+    px-[var(--size/gap/md,16px)] py-[var(--size/gap/3xs,4px)]
+    cursor-pointer
+  "
+  data-name="button"
+>
+  <div className="
+    font-[family-name:var(--font/family/title,'ABChanel_Corpo_2022:bold',sans-serif)]
+    font-[var(--font/weight/bold,normal)]
+    text-[color:var(--button/text/secondary/default,black)]
+    text-[length:var(--font/size/sm,14px)]
+    tracking-[0.1px] uppercase leading-[100%]
+    whitespace-nowrap
+  ">
+    <p>Label</p>
+  </div>
+</button>
+```
+
+### Patterns JSX — Floating Action Button (FAB)
+
+```tsx
+{/* FAB — icon only */}
+<div
+  className="
+    bg-[var(--floating-action-button/background/default,black)]
+    flex gap-[var(--size/gap/xs,0px)] items-center
+    min-h-[48px] p-[var(--size/gap/sm,12px)]
+    rounded-[999px]
+    shadow-[0px_4px_24px_0px_rgba(0,0,0,0.15)]
+  "
+  data-name="Floating action button"
+>
+  <div className="overflow-clip relative shrink-0 size-[24px]" data-name="icon">
+    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+  </div>
+</div>
+
+{/* FAB — avec label */}
+<div
+  className="
+    bg-[var(--floating-action-button/background/default,black)]
+    flex gap-[var(--size/gap/xs,8px)] items-center
+    min-h-[48px] px-[var(--size/gap/md,16px)] py-[var(--size/gap/sm,12px)]
+    rounded-[999px]
+    shadow-[0px_4px_24px_0px_rgba(0,0,0,0.15)]
+  "
+  data-name="Floating action button"
+>
+  <div className="overflow-clip relative shrink-0 size-[24px]" data-name="icon">
+    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgVector} />
+  </div>
+  <div className="
+    font-[family-name:var(--font/family/title,'ABChanel_Corpo_2022:bold',sans-serif)]
+    text-[color:var(--colors/neutral/white,white)]
+    text-[length:var(--font/size/md,16px)]
+    tracking-[0.1px] uppercase
+  ">
+    <p>Label</p>
+  </div>
+</div>
+```
