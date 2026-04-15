@@ -35,6 +35,9 @@ Podfile.lock
 .env
 *.env.local
 
+# MCP local config (contains API tokens — never commit)
+.mcp.json
+
 # Previews cache
 **/PreviewReplacement*.swift
 storybook/node_modules/
