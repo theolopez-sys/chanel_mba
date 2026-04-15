@@ -1,0 +1,8 @@
+{
+  "name": "Chanel Clienteling — Home Page Generator",
+  "id": "chanel-clienteling-home-page",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page"
+}
