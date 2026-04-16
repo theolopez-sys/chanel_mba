@@ -216,6 +216,16 @@ On utilise **SF Symbols** comme bibliothèque d'icônes native. Correspondances 
 
 ## 8. Composants
 
+> **Règle fondamentale — Composants en premier**
+>
+> Avant de créer une nouvelle vue ou un nouveau composant, **vérifier systématiquement si un composant DS existe déjà** pour répondre au besoin. L'utilisation des composants existants est obligatoire dès lors qu'ils couvrent le cas d'usage.
+>
+> Si aucun composant existant ne convient, **le signaler explicitement comme un manquement du Design System** (commentaire `// DS GAP:` dans le code, mention dans la PR, et remontée au DS owner) plutôt que de créer silencieusement un composant ad hoc. Un manquement identifié devient une opportunité d'enrichir le système.
+>
+> **Composants disponibles :** `DSButton` · `DSCard` · `DSHeroCard` · `DSStatCard` · `DSActionCard` · `DSBadge` · `DSHeader` · `DSTabBar` · `DSActivityList`
+
+---
+
 ### DSButton
 
 ```swift
@@ -350,6 +360,8 @@ VStack { ... }
 
 ### ✅ DO
 
+- **Toujours utiliser un composant DS existant** avant d'en créer un nouveau — consulter la liste en section 8
+- **Signaler explicitement tout composant manquant** avec `// DS GAP: <description>` dans le code et une mention dans la PR
 - Utiliser **exclusivement** les tokens `Color.DS.*`, `Font.DS.*`, `DSSpacing.*`, `DSRadius.*`
 - Mettre les **titres de section en uppercase** avec `dsLabel()`
 - Utiliser le **noir comme couleur d'identité principale** (headers, CTA)
@@ -360,6 +372,8 @@ VStack { ... }
 
 ### ❌ DON'T
 
+- Ne pas **créer silencieusement un composant custom** si un équivalent DS existe — vérifier d'abord
+- Ne pas **ignorer un manquement DS** : tout besoin non couvert doit être remonté au DS owner
 - Ne pas **hardcoder de couleurs** (`Color(hex: "#ABC")` directement dans les vues)
 - Ne pas **mélanger serif et sans-serif** sur un même niveau hiérarchique
 - Ne pas utiliser **plus d'un bouton `.primary`** par section
